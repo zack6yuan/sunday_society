@@ -8,12 +8,13 @@
 @theme {
   /* Brand */
   --color-army: #123524;
-  --color-gold: #ffbb00;
+  --color-gold: #c9a227;
 
   /* Neutrals, named by role rather than by hue */
-  --color-paper: #ffffff; /* light type and fills on army */
-  --color-ink: #0a0a0a; /* dark type on gold */
-  --color-rule: rgb(255 255 255 / 0.3); /* dashed hairline dividers */
+  --color-paper: #f5f1e8; /* light type and fills on army */
+  --color-ink: #1c1c1c; /* dark type on gold */
+  --color-cloud: #fafbf4; /* the off-white ground the product grid sits on */
+  --color-rule: rgb(245 241 232 / 0.18); /* dashed hairline dividers */
 
   /* One hover/transition speed across the site */
   --default-transition-duration: 300ms;
