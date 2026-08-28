@@ -54,9 +54,14 @@ Next.js 16 App Router, React 19, TypeScript strict, Tailwind CSS v4. `@/*` resol
 
 Match the existing visual language; it is deliberate, not scaffold output.
 
-**Colors** (`@theme` in `app/globals.css`):
+**Colors** (`@theme` in `app/globals.css`). Never write a raw color in a component — no `text-white`, no `bg-black`, no hex. If a new color is needed, add a token here first:
 - `--color-army` `#123524` — deep bottle green. Header ground, button hover fill.
 - `--color-gold` `#ffbb00` — the single accent. Utility bar, hover states, eyebrow text.
+- `--color-paper` `#ffffff` — light type and fills sitting on army.
+- `--color-ink` `#0a0a0a` — dark type sitting on gold.
+- `--color-rule` `white/30` — dashed hairline dividers.
+
+Neutrals are named by role, not hue, so a future move off pure white doesn't mean renaming classes.
 
 **Fonts** (`@theme inline` aliases over `next/font` variables):
 - `font-sans` → DM Sans — nav, labels, buttons, body copy.
@@ -65,13 +70,13 @@ Match the existing visual language; it is deliberate, not scaffold output.
 
 **Conventions:**
 - Nav items, labels, and button text are UPPERCASE and bold; headlines are uppercase `font-display font-extrabold`. `tracking-tighter` is set globally on `<body>`; label-ish text overrides to `tracking-wide`.
-- Hover is a color transition to `gold` (links) or an army/white inversion (buttons), `transition duration-200`–`400`. Interactive elements get `cursor-pointer`.
-- Section dividers are dashed hairlines: `border-b border-dashed border-white/30`.
+- Hover is a color transition to `gold` (links) or an army/paper inversion (buttons). Write bare `transition` — speed comes from `--default-transition-duration` (300ms) in `@theme`, so don't add a `duration-*` class unless an element genuinely needs to differ. Interactive elements get `cursor-pointer`.
+- Section dividers are dashed hairlines: `border-b border-dashed border-rule`.
 - `lg:` is the desktop breakpoint — hamburger below it, full nav at and above. The mobile menu animates via `max-height` and uses oversized lowercase links with a gold `after:` underline that wipes in from the left.
 - Above-the-fold imagery uses `next/image` with `fill`, `object-cover`, and `priority`.
 
 ## Known rough edges from the scaffold
 
 - In `app/layout.tsx`, `<UtilityBar />` and `<Navbar />` are currently siblings of `<body>` rather than children of it. Browsers hoist them so it renders, but it is invalid — layout chrome belongs inside `<body>`.
-- `app/globals.css` still carries create-next-app leftovers: the `prefers-color-scheme` dark block (the design is not dark-mode aware) and a `body { font-family: Arial }` rule that the `font-sans` utility on `<body>` overrides.
+- `app/globals.css` still carries one create-next-app leftover: the `prefers-color-scheme` dark block flipping `--background`/`--foreground`. Nothing else in the design is dark-mode aware, so it mostly has no visible effect.
 - `README.md` and `public/*.svg` are still untouched create-next-app defaults.
