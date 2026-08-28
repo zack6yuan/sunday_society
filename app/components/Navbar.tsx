@@ -18,7 +18,7 @@ export default function Navbar() {
   const [clicked, setClicked] = useState(false);
 
   return (
-    <header className="bg-army border-b border-dashed border-white/30 ">
+    <header className="bg-army border-b border-dashed border-rule ">
       <nav className="flex items-center justify-between p-8">
         <span className="lg:flex-1 font-bold font-sans tracking-tighter text-xl md:text-2xl">
           SUNDAY SOCIETY
@@ -36,7 +36,7 @@ export default function Navbar() {
           {navItems.map((item, k) => (
             <li
               key={k}
-              className="hover:text-gold transition duration-300 cursor-pointer"
+              className="hover:text-gold transition cursor-pointer"
             >
               {item.label}
             </li>
@@ -46,7 +46,7 @@ export default function Navbar() {
           {utilityItems.map((item, j) => (
             <li
               key={j}
-              className="hover:text-gold transition duration-300 cursor-pointer"
+              className="hover:text-gold transition cursor-pointer"
             >
               {item.label}
             </li>
@@ -54,7 +54,7 @@ export default function Navbar() {
         </ul>
       </nav>
       <div
-        className={`lg:hidden overflow-hidden transition-[max-height] duration-300 ease-in-out ${
+        className={`lg:hidden overflow-hidden transition-[max-height] ease-in-out ${
           clicked ? "max-h-96" : "max-h-0"
         }`}
       >
@@ -63,10 +63,10 @@ export default function Navbar() {
             <li
               key={i}
               onClick={() => setClicked(false)}
-              className="relative w-fit cursor-pointer text-4xl font-light transition duration-400 hover:text-gold
+              className="relative w-fit cursor-pointer text-4xl font-light transition hover:text-gold
              after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full
              after:origin-right after:scale-x-0 after:bg-gold
-             after:transition-transform after:duration-400
+             after:transition-transform
              hover:after:origin-left hover:after:scale-x-100"
             >
               {item.label.toLowerCase()}
