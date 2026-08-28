@@ -63,6 +63,8 @@ Match the existing visual language; it is deliberate, not scaffold output.
 
 Neutrals are named by role, not hue, so a future move off pure white doesn't mean renaming classes.
 
+**Anything sitting on army must set its text colour explicitly** (`text-paper` on the header, for example). Body text inherits `--foreground`, which the `prefers-color-scheme` block flips — so inherited text on a fixed dark surface is legible in dark mode and nearly invisible in light mode.
+
 **Fonts** (`@theme inline` aliases over `next/font` variables):
 - `font-sans` → DM Sans — nav, labels, buttons, body copy.
 - `font-display` → Archivo — headlines, used `font-extrabold` and uppercase.
@@ -72,10 +74,11 @@ Neutrals are named by role, not hue, so a future move off pure white doesn't mea
 - Nav items, labels, and button text are UPPERCASE and bold; headlines are uppercase `font-display font-extrabold`. `tracking-tighter` is set globally on `<body>`; label-ish text overrides to `tracking-wide`.
 - Hover is a color transition to `gold` (links) or an army/paper inversion (buttons). Write bare `transition` — speed comes from `--default-transition-duration` (300ms) in `@theme`, so don't add a `duration-*` class unless an element genuinely needs to differ. Interactive elements get `cursor-pointer`.
 - Section dividers are dashed hairlines: `border-b border-dashed border-rule`.
-- `lg:` is the desktop breakpoint — hamburger below it, full nav at and above. The mobile menu animates via `max-height` and uses oversized lowercase links with a gold `after:` underline that wipes in from the left.
+- `lg:` is the desktop breakpoint — hamburger below it, full nav at and above. The mobile menu animates `grid-template-rows` from `0fr` to `1fr` (not `max-height`) so it sizes to its own content; adding menu items can never clip it. Links are oversized and lowercase with a gold `after:` underline that wipes in from the left.
+- Padding steps down on small screens rather than staying fixed — the nav runs `px-5 py-4 md:px-8 md:py-6 lg:py-8`. A single `p-8` at every width makes a mobile header roughly half again too tall.
 - Above-the-fold imagery uses `next/image` with `fill`, `object-cover`, and `priority`.
 
 ## Known rough edges from the scaffold
 
-- `app/globals.css` still carries one create-next-app leftover: the `prefers-color-scheme` dark block flipping `--background`/`--foreground`. Nothing else in the design is dark-mode aware, so it mostly has no visible effect.
+- `app/globals.css` still carries one create-next-app leftover: the `prefers-color-scheme` dark block flipping `--background`/`--foreground`. Nothing else in the design is dark-mode aware, and it has already caused one contrast bug (see the note in Design system). Worth deleting outright if the site is never going dark.
 - `README.md` and `public/*.svg` are still untouched create-next-app defaults.
