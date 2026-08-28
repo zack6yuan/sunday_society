@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 npm run dev     # dev server on :3000 (Turbopack)
 npm run build   # production build (Turbopack); also runs TypeScript
-npm run lint    # eslint directly
+npm run lint    # eslint directly (CI runs it with --max-warnings=0)
 npm start       # serve the production build
 npx next typegen  # regenerate the global PageProps/LayoutProps/RouteContext types
 ```
@@ -17,6 +17,14 @@ npx next typegen  # regenerate the global PageProps/LayoutProps/RouteContext typ
 There is no test framework in this project — no runner, no test files. Don't invent a test command; run `npm run lint` and `npm run build` to validate a change.
 
 `next build` does **not** lint in Next 16, so lint separately. `next lint` was removed in this version.
+
+## Branching and deploys
+
+**Never commit to `main`.** All work happens on a feature branch (`feat/`, `fix/`, `chore/`) and lands via pull request — including small one-line changes.
+
+`main` is production: Vercel's GitHub integration deploys it to shopsundaysociety.vercel.app and builds a preview for every PR. A merge is a deploy, so the branch you commit on is the only thing standing between a bad change and the live site.
+
+`.github/workflows/ci.yml` runs lint and build on every PR to `main`. PRs are set to auto-merge once required checks pass, which means nothing gates a green PR — run `npm run lint -- --max-warnings=0` and `npm run build` locally before pushing rather than using CI to find out.
 
 ## What this is
 
