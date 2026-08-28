@@ -33,7 +33,7 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "Sunday Society",
-  description: "Golf apparrel and accessories",
+  description: "Golf apparel and accessories",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -42,9 +42,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} ${ebGaramond.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <UtilityBar />
-      <Navbar />
-      <body className="min-h-full flex flex-col font-sans tracking-tighter">{children}</body>
+      <body className="min-h-full flex flex-col font-sans tracking-tighter">
+        <UtilityBar />
+        <Navbar />
+        <main className="flex-1">{children}</main>
+      </body>
     </html>
   );
 }

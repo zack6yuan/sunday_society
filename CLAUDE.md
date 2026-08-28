@@ -44,7 +44,7 @@ Sunday Society is a golf apparel and accessories brand. The destination is a rea
 
 Next.js 16 App Router, React 19, TypeScript strict, Tailwind CSS v4. `@/*` resolves to the repo root.
 
-- `app/layout.tsx` is the only place site chrome lives: it loads the fonts via `next/font/google` (exposing them as CSS variables on `<html>`) and renders `UtilityBar` + `Navbar` around every route. Page files render only their own sections — don't re-declare nav or footer per page.
+- `app/layout.tsx` is the only place site chrome lives: it loads the fonts via `next/font/google` (exposing them as CSS variables on `<html>`) and renders `UtilityBar` + `Navbar` inside `<body>`, above a `<main className="flex-1">` that pages render into. Page files render only their own sections — don't re-declare nav or footer per page.
 - `app/components/` holds shared presentational components: one default export per file, PascalCase filename matching the component.
 - Server Components are the default. Add `"use client"` only for actual interactivity — `Navbar` is client-only because of the mobile menu toggle; `Hero` and `UtilityBar` are server components and should stay that way.
 - Request APIs are async in Next 16: `params` and `searchParams` are Promises. Type route files with the generated helpers, e.g. `PageProps<'/products/[slug]'>` and `LayoutProps<'/'>`.
@@ -77,6 +77,5 @@ Neutrals are named by role, not hue, so a future move off pure white doesn't mea
 
 ## Known rough edges from the scaffold
 
-- In `app/layout.tsx`, `<UtilityBar />` and `<Navbar />` are currently siblings of `<body>` rather than children of it. Browsers hoist them so it renders, but it is invalid — layout chrome belongs inside `<body>`.
 - `app/globals.css` still carries one create-next-app leftover: the `prefers-color-scheme` dark block flipping `--background`/`--foreground`. Nothing else in the design is dark-mode aware, so it mostly has no visible effect.
 - `README.md` and `public/*.svg` are still untouched create-next-app defaults.
