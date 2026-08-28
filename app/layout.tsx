@@ -41,6 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} ${ebGaramond.variable} ${dmSans.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans tracking-tighter">
         <UtilityBar />
