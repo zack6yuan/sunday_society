@@ -1,1 +1,69 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 @AGENTS.md
+
+## Commands
+
+```bash
+npm run dev     # dev server on :3000 (Turbopack)
+npm run build   # production build (Turbopack); also runs TypeScript
+npm run lint    # eslint directly (CI runs it with --max-warnings=0)
+npm start       # serve the production build
+npx next typegen  # regenerate the global PageProps/LayoutProps/RouteContext types
+```
+
+There is no test framework in this project — no runner, no test files. Don't invent a test command; run `npm run lint` and `npm run build` to validate a change.
+
+`next build` does **not** lint in Next 16, so lint separately. `next lint` was removed in this version.
+
+## Branching and deploys
+
+**Never commit to `main`.** All work happens on a feature branch (`feat/`, `fix/`, `chore/`) and lands via pull request — including small one-line changes.
+
+`main` is production: Vercel's GitHub integration deploys it to shopsundaysociety.vercel.app and builds a preview for every PR. A merge is a deploy, so the branch you commit on is the only thing standing between a bad change and the live site.
+
+`.github/workflows/ci.yml` runs lint and build on every PR to `main`. PRs are set to auto-merge once required checks pass, which means nothing gates a green PR — run `npm run lint -- --max-warnings=0` and `npm run build` locally before pushing rather than using CI to find out.
+
+## What this is
+
+Sunday Society is a golf apparel and accessories brand. The destination is a real storefront (product pages, cart, checkout), but today it is front-end only: one static page composed of a promo utility bar, a nav, and a hero.
+
+**No commerce backend or CMS has been chosen yet.** Keep content hardcoded in components until one is picked — don't add a data-fetching layer, state manager, or third-party SDK unprompted.
+
+## Architecture
+
+Next.js 16 App Router, React 19, TypeScript strict, Tailwind CSS v4. `@/*` resolves to the repo root.
+
+- `app/layout.tsx` is the only place site chrome lives: it loads the fonts via `next/font/google` (exposing them as CSS variables on `<html>`) and renders `UtilityBar` + `Navbar` around every route. Page files render only their own sections — don't re-declare nav or footer per page.
+- `app/components/` holds shared presentational components: one default export per file, PascalCase filename matching the component.
+- Server Components are the default. Add `"use client"` only for actual interactivity — `Navbar` is client-only because of the mobile menu toggle; `Hero` and `UtilityBar` are server components and should stay that way.
+- Request APIs are async in Next 16: `params` and `searchParams` are Promises. Type route files with the generated helpers, e.g. `PageProps<'/products/[slug]'>` and `LayoutProps<'/'>`.
+- Tailwind v4 is configured CSS-first in `app/globals.css` — there is no `tailwind.config.*` file, and adding one is the wrong move. New design tokens go in the `@theme` block.
+
+## Design system
+
+Match the existing visual language; it is deliberate, not scaffold output.
+
+**Colors** (`@theme` in `app/globals.css`):
+- `--color-army` `#123524` — deep bottle green. Header ground, button hover fill.
+- `--color-gold` `#ffbb00` — the single accent. Utility bar, hover states, eyebrow text.
+
+**Fonts** (`@theme inline` aliases over `next/font` variables):
+- `font-sans` → DM Sans — nav, labels, buttons, body copy.
+- `font-display` → Archivo — headlines, used `font-extrabold` and uppercase.
+- `font-serif` → EB Garamond — reserved for editorial/journal, not yet used.
+
+**Conventions:**
+- Nav items, labels, and button text are UPPERCASE and bold; headlines are uppercase `font-display font-extrabold`. `tracking-tighter` is set globally on `<body>`; label-ish text overrides to `tracking-wide`.
+- Hover is a color transition to `gold` (links) or an army/white inversion (buttons), `transition duration-200`–`400`. Interactive elements get `cursor-pointer`.
+- Section dividers are dashed hairlines: `border-b border-dashed border-white/30`.
+- `lg:` is the desktop breakpoint — hamburger below it, full nav at and above. The mobile menu animates via `max-height` and uses oversized lowercase links with a gold `after:` underline that wipes in from the left.
+- Above-the-fold imagery uses `next/image` with `fill`, `object-cover`, and `priority`.
+
+## Known rough edges from the scaffold
+
+- In `app/layout.tsx`, `<UtilityBar />` and `<Navbar />` are currently siblings of `<body>` rather than children of it. Browsers hoist them so it renders, but it is invalid — layout chrome belongs inside `<body>`.
+- `app/globals.css` still carries create-next-app leftovers: the `prefers-color-scheme` dark block (the design is not dark-mode aware) and a `body { font-family: Arial }` rule that the `font-sans` utility on `<body>` overrides.
+- `README.md` and `public/*.svg` are still untouched create-next-app defaults.
