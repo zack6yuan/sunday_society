@@ -26,6 +26,14 @@ There is no test framework in this project — no runner, no test files. Don't i
 
 `.github/workflows/ci.yml` runs lint and build on every PR to `main`. PRs are set to auto-merge once required checks pass, which means nothing gates a green PR — run `npm run lint -- --max-warnings=0` and `npm run build` locally before pushing rather than using CI to find out.
 
+### Commit messages
+
+Use [Conventional Commits](https://www.conventionalcommits.org/), matching the existing history: `feat:`, `fix:`, `chore:`, `docs:`, `ci:`, `refactor:`, `perf:`, `style:`. Imperative mood, lowercase after the colon, no trailing period.
+
+**PR titles follow the same format, and matter more than the individual commits.** `main` takes squash merges, so the PR title — not the branch's commit messages — becomes the permanent commit on `main`. A tidy branch history behind a prose PR title still lands on `main` as prose.
+
+`aff499c` ("Add CLAUDE.md, CI checks, and branch workflow rules (#1)") is the one commit on `main` that breaks this convention, and that is exactly how it happened.
+
 ## What this is
 
 Sunday Society is a golf apparel and accessories brand. The destination is a real storefront (product pages, cart, checkout), but today it is front-end only: one static page composed of a promo utility bar, a nav, and a hero.
