@@ -1,20 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import AddToCart from "../../components/AddToCart";
-import { productBySlug, products, type Ground, type Ink } from "../../lib/products";
-
-const grounds: Record<Ground, string> = {
-  forest: "bg-army",
-  cream: "bg-paper",
-  gold: "bg-gold",
-  black: "bg-ink",
-};
-
-const inks: Record<Ink, string> = {
-  paper: "text-paper",
-  army: "text-army",
-  gold: "text-gold",
-};
+import { productBySlug, products } from "../../lib/products";
+import { grounds, inks } from "../../lib/tiles";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));

@@ -2,6 +2,7 @@
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { cartCount } from "../lib/cart";
 
 export default function Navbar() {
   const navItems = [
@@ -13,7 +14,7 @@ export default function Navbar() {
   const utilityItems = [
     { label: "SEARCH", route: "#" },
     { label: "ACCOUNT", route: "#" },
-    { label: "CART (0)", route: "#" },
+    { label: `CART (${cartCount})`, route: "/cart" },
   ];
 
   const [clicked, setClicked] = useState(false);
