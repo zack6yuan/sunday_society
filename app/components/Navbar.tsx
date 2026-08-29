@@ -3,9 +3,10 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { cartCount } from "../lib/cart";
+import { useCart } from "./CartProvider";
 
 export default function Navbar() {
+  const { count: cartCount } = useCart();
   // The Society and Journal return here once those pages exist.
   const navItems = [
     { label: "Men", route: "/men" },

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, EB_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
+import CartProvider from "./components/CartProvider";
 import Navbar from "./components/Navbar";
 import UtilityBar from "./components/UtilityBar";
 import Footer from "./components/Footer";
@@ -35,10 +36,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans tracking-tighter">
-        <UtilityBar />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <CartProvider>
+          <UtilityBar />
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

@@ -1,16 +1,38 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useCart } from "./CartProvider";
 
-// Size selection is real client state; the add-to-cart button is inert until
-// a commerce backend exists, matching the footer's sign-up treatment.
+// Size selection and add-to-cart against the client cart. Checkout is still
+// inert until a commerce backend exists.
 export default function AddToCart({
+  slug,
   sizes,
   soldOut,
 }: {
+  slug: string;
   sizes?: readonly string[];
   soldOut?: boolean;
 }) {
+  const { add } = useCart();
   const [size, setSize] = useState<string | null>(null);
+  const [justAdded, setJustAdded] = useState(false);
+  const flashTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (flashTimer.current) clearTimeout(flashTimer.current);
+    };
+  }, []);
+
+  const needsSize = Boolean(sizes) && size === null;
+
+  const handleAdd = () => {
+    if (needsSize) return;
+    add(slug, size ?? undefined);
+    setJustAdded(true);
+    if (flashTimer.current) clearTimeout(flashTimer.current);
+    flashTimer.current = setTimeout(() => setJustAdded(false), 1500);
+  };
 
   return (
     <div className="flex flex-col gap-6">
@@ -51,9 +73,11 @@ export default function AddToCart({
       ) : (
         <button
           type="button"
-          className="w-full cursor-pointer bg-army py-4 text-xs font-bold tracking-[0.2em] text-paper uppercase transition hover:bg-gold hover:text-army lg:max-w-md"
+          onClick={handleAdd}
+          disabled={needsSize}
+          className="w-full cursor-pointer bg-army py-4 text-xs font-bold tracking-[0.2em] text-paper uppercase transition hover:bg-gold hover:text-army disabled:cursor-not-allowed disabled:bg-army/40 disabled:hover:text-paper lg:max-w-md"
         >
-          Add to Cart
+          {justAdded ? "Added ✓" : needsSize ? "Select a Size" : "Add to Cart"}
         </button>
       )}
     </div>
