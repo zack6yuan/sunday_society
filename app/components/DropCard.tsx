@@ -67,7 +67,7 @@ export default function DropCard({
         </span>
         <span className="text-[10px] font-medium text-army lg:text-xs">${price}</span>
       </div>
-      <p className="mt-[3px] text-[9px] tracking-[0.05em] text-army/55 lg:mt-1 lg:text-[11px] lg:tracking-[0.06em]">
+      <p className="mt-[3px] text-[9px] tracking-[0.05em] text-army/75 lg:mt-1 lg:text-[11px] lg:tracking-[0.06em]">
         {colorway}
       </p>
     </a>
