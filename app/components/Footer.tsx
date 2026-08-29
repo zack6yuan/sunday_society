@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const columns = [
   {
     heading: "SHOP",
@@ -74,9 +76,13 @@ export default function Footer() {
         {/* Link columns: two-up on phones, four-up from md. */}
         <div className="grid grid-cols-2 gap-x-6 gap-y-9 border-b border-dashed border-rule py-10 md:grid-cols-4 lg:gap-x-10 lg:py-14">
           <div className="col-span-2 md:col-span-1">
-            <span className="font-sans text-lg font-bold tracking-tighter lg:text-xl">
-              SUNDAY SOCIETY
-            </span>
+            <Image
+              src="/logo.png"
+              alt="Sunday Society"
+              width={452}
+              height={246}
+              className="h-14 w-auto lg:h-16"
+            />
             <p className="mt-3 max-w-xs text-sm text-paper/70">
               Six days to practice. One day to play.
             </p>
