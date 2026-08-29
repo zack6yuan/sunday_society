@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useCart } from "./CartProvider";
 
@@ -38,9 +39,17 @@ export default function AddToCart({
     <div className="flex flex-col gap-6">
       {sizes && (
         <div>
-          <span className="font-sans text-[10px] font-bold tracking-[0.2em] text-army uppercase">
-            Size
-          </span>
+          <div className="flex items-baseline justify-between gap-4 lg:max-w-md">
+            <span className="font-sans text-[10px] font-bold tracking-[0.2em] text-army uppercase">
+              Size
+            </span>
+            <Link
+              href="/help/size-guide"
+              className="text-[10px] font-bold tracking-[0.14em] text-army/60 uppercase underline underline-offset-4 transition hover:text-gold"
+            >
+              Size Guide
+            </Link>
+          </div>
           <div className="mt-3 flex flex-wrap gap-2">
             {sizes.map((option) => (
               <button

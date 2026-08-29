@@ -23,10 +23,10 @@ const columns = [
   {
     heading: "HELP",
     links: [
-      { label: "Shipping", href: "#" },
-      { label: "Returns", href: "#" },
-      { label: "Size Guide", href: "#" },
-      { label: "Contact", href: "#" },
+      { label: "Shipping", href: "/help/shipping" },
+      { label: "Returns", href: "/help/returns" },
+      { label: "Size Guide", href: "/help/size-guide" },
+      { label: "Contact", href: "/help/contact" },
     ],
   },
 ];
