@@ -20,7 +20,7 @@ const collections: Collection[] = [
     title: "THE SUNDAY BEST CAPSULE",
     copy: "Cut for the day that matters twice. Pressed enough for the pew, built enough for the tee. No changing in the parking lot, no apologies to the starter. Just one shirt that holds up from the first hymn to the last putt.",
     cta: "SHOP SUNDAY BEST →",
-    image: { src: "/pga.jpg", alt: "" },
+    shot: "PRESSED POLO ON A CHURCH PEW",
     panel: "paper",
   },
   {
