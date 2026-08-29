@@ -59,7 +59,7 @@ export default function Collections() {
                   src={collection.image.src}
                   alt={collection.image.alt}
                   fill
-                  sizes="100vw"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover transform-3d"
                 />
               ) : (
