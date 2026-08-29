@@ -65,7 +65,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
           </p>
 
           <div className="mt-8 lg:mt-10">
-            <AddToCart sizes={product.sizes} soldOut={product.soldOut} />
+            <AddToCart slug={product.slug} sizes={product.sizes} soldOut={product.soldOut} />
           </div>
 
           <p className="mt-8 border-t border-dashed border-army/20 pt-5 text-xs tracking-[0.05em] text-army/60 lg:text-[13px]">
