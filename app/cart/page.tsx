@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import CartContents from "../components/CartContents";
 
 export const metadata: Metadata = {
-  title: "Cart — Sunday Society",
+  title: "Cart",
   description: "Your Sunday Society cart.",
 };
 

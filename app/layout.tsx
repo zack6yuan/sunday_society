@@ -24,8 +24,21 @@ const dmSans = DM_Sans({
 
 
 export const metadata: Metadata = {
-  title: "Sunday Society",
-  description: "Golf apparel and accessories",
+  metadataBase: new URL("https://shopsundaysociety.vercel.app"),
+  title: {
+    default: "Sunday Society",
+    template: "%s — Sunday Society",
+  },
+  description:
+    "Six days to practice. One day to play. Golf apparel and accessories from Sunday Society.",
+  openGraph: {
+    siteName: "Sunday Society",
+    type: "website",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

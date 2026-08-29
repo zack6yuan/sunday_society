@@ -15,7 +15,7 @@ export async function generateMetadata({
   const product = productBySlug(slug);
   if (!product) return {};
   return {
-    title: `${product.name} — Sunday Society`,
+    title: product.name,
     description: product.description,
   };
 }

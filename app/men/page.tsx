@@ -3,7 +3,7 @@ import ShopGrid from "../components/ShopGrid";
 import { men } from "../lib/products";
 
 export const metadata: Metadata = {
-  title: "Men — Sunday Society",
+  title: "Men",
   description: "The men's side of the first drop: polos, hats, layers, and accessories.",
 };
 
