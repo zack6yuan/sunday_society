@@ -2,7 +2,9 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative h-[60svh] lg:h-[87svh]">
+    // Pulled up under the sticky nav pill so the photo bleeds behind it —
+    // the negative margins match the header's height (pt-3 + pill).
+    <section className="relative -mt-18 h-[60svh] md:-mt-20 lg:h-[87svh]">
       <Image src="/first-light.jpg" alt="" fill priority className="object-cover" />
       {/* Scrim. The copy sits on whatever the photo happens to put behind it —
           bright foliage took the headline to 1.1:1 in places. */}
