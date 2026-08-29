@@ -29,6 +29,8 @@
 }
 
 body {
-  background: var(--background);
+  /* Cloud, not white: the floating nav pill shows the page ground through
+     the gaps around it, and pure white reads cold against the palette. */
+  background: var(--color-cloud);
   color: var(--foreground);
 }
