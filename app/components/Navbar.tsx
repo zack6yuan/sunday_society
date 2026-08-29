@@ -18,7 +18,7 @@ export default function Navbar() {
   const [clicked, setClicked] = useState(false);
 
   return (
-    <header className="bg-army text-paper border-b border-dashed border-rule">
+    <header className="relative bg-army text-paper border-b border-dashed border-rule">
       <nav className="flex items-center justify-between px-5 py-4 md:px-8 md:py-6 lg:py-8">
         <span className="lg:flex-1 font-bold font-sans tracking-tighter text-lg sm:text-xl md:text-2xl">
           SUNDAY SOCIETY
@@ -59,14 +59,16 @@ export default function Navbar() {
         </ul>
       </nav>
       {/* Rows go 0fr -> 1fr so the panel animates to its own content height,
-          with no max-height to outgrow as menu items are added. */}
+          with no max-height to outgrow as menu items are added. Absolutely
+          positioned under the header so opening it overlays the page instead
+          of pushing it down. */}
       <div
-        className={`grid lg:hidden transition-[grid-template-rows] ease-in-out ${
+        className={`absolute inset-x-0 top-full z-50 grid bg-army lg:hidden transition-[grid-template-rows] ease-in-out ${
           clicked ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
         <div className="overflow-hidden">
-          <ul className="flex flex-col gap-5 px-5 pb-6 sm:gap-6 md:px-8 md:pb-8 text-sm font-bold">
+          <ul className="flex flex-col gap-5 px-5 pt-4 pb-6 sm:gap-6 md:px-8 md:pb-8 text-sm font-bold border-b border-dashed border-rule">
             {[...navItems, ...utilityItems].map((item, i) => (
               <li
                 key={i}
