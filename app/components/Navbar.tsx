@@ -1,11 +1,12 @@
 "use client";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Navbar() {
   const navItems = [
-    { label: "MEN", route: "#" },
-    { label: "WOMEN", route: "#" },
+    { label: "MEN", route: "/men" },
+    { label: "WOMEN", route: "/women" },
     { label: "THE SOCIETY", route: "#" },
     { label: "JOURNAL", route: "#" },
   ];
@@ -20,9 +21,13 @@ export default function Navbar() {
   return (
     <header className="relative bg-army text-paper border-b border-dashed border-rule">
       <nav className="flex items-center justify-between px-5 py-4 md:px-8 md:py-6 lg:py-8">
-        <span className="lg:flex-1 font-bold font-sans tracking-tighter text-lg sm:text-xl md:text-2xl">
+        <Link
+          href="/"
+          onClick={() => setClicked(false)}
+          className="lg:flex-1 font-bold font-sans tracking-tighter text-lg sm:text-xl md:text-2xl"
+        >
           SUNDAY SOCIETY
-        </span>
+        </Link>
         <button
           type="button"
           onClick={() => setClicked(!clicked)}
@@ -44,16 +49,20 @@ export default function Navbar() {
           />
         </button>
         <ul className="hidden lg:flex gap-6 xl:gap-10 text-sm font-bold">
-          {navItems.map((item, k) => (
-            <li key={k} className="hover:text-gold transition cursor-pointer">
-              {item.label}
+          {navItems.map((item) => (
+            <li key={item.label}>
+              <Link href={item.route} className="hover:text-gold transition cursor-pointer">
+                {item.label}
+              </Link>
             </li>
           ))}
         </ul>
         <ul className="hidden lg:flex lg:flex-1 lg:justify-end gap-6 xl:gap-10 text-sm font-bold">
-          {utilityItems.map((item, j) => (
-            <li key={j} className="hover:text-gold transition cursor-pointer">
-              {item.label}
+          {utilityItems.map((item) => (
+            <li key={item.label}>
+              <Link href={item.route} className="hover:text-gold transition cursor-pointer">
+                {item.label}
+              </Link>
             </li>
           ))}
         </ul>
@@ -69,17 +78,19 @@ export default function Navbar() {
       >
         <div className="overflow-hidden">
           <ul className="flex flex-col gap-5 px-5 pt-4 pb-6 sm:gap-6 md:px-8 md:pb-8 text-sm font-bold border-b border-dashed border-rule">
-            {[...navItems, ...utilityItems].map((item, i) => (
-              <li
-                key={i}
-                onClick={() => setClicked(false)}
-                className="relative w-fit cursor-pointer text-3xl sm:text-4xl font-light transition hover:text-gold
+            {[...navItems, ...utilityItems].map((item) => (
+              <li key={item.label}>
+                <Link
+                  href={item.route}
+                  onClick={() => setClicked(false)}
+                  className="relative block w-fit cursor-pointer text-3xl sm:text-4xl font-light transition hover:text-gold
              after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full
              after:origin-right after:scale-x-0 after:bg-gold
              after:transition-transform
              hover:after:origin-left hover:after:scale-x-100"
-              >
-                {item.label.toLowerCase()}
+                >
+                  {item.label.toLowerCase()}
+                </Link>
               </li>
             ))}
           </ul>

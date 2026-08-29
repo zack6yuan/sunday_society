@@ -1,15 +1,31 @@
 const columns = [
   {
     heading: "SHOP",
-    links: ["The First Drop", "Men", "Women", "Hats", "Accessories"],
+    links: [
+      { label: "The First Drop", href: "/#releases" },
+      { label: "Men", href: "/men" },
+      { label: "Women", href: "/women" },
+      { label: "Hats", href: "#" },
+      { label: "Accessories", href: "#" },
+    ],
   },
   {
     heading: "THE SOCIETY",
-    links: ["Our Story", "Journal", "Stockists", "Ambassadors"],
+    links: [
+      { label: "Our Story", href: "#" },
+      { label: "Journal", href: "#" },
+      { label: "Stockists", href: "#" },
+      { label: "Ambassadors", href: "#" },
+    ],
   },
   {
     heading: "HELP",
-    links: ["Shipping", "Returns", "Size Guide", "Contact"],
+    links: [
+      { label: "Shipping", href: "#" },
+      { label: "Returns", href: "#" },
+      { label: "Size Guide", href: "#" },
+      { label: "Contact", href: "#" },
+    ],
   },
 ];
 
@@ -73,12 +89,12 @@ export default function Footer() {
               </h3>
               <ul className="mt-4 flex flex-col gap-2.5 lg:mt-5 lg:gap-3">
                 {column.links.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="text-sm text-paper/80 transition hover:text-gold lg:text-base"
                     >
-                      {link}
+                      {link.label}
                     </a>
                   </li>
                 ))}
