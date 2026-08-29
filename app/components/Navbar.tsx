@@ -1,5 +1,6 @@
 "use client";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { cartCount } from "../lib/cart";
@@ -21,12 +22,15 @@ export default function Navbar() {
   return (
     <header className="relative bg-army text-paper border-b border-dashed border-rule">
       <nav className="flex items-center justify-between px-5 py-4 md:px-8 md:py-6 lg:py-8">
-        <Link
-          href="/"
-          onClick={() => setClicked(false)}
-          className="lg:flex-1 font-bold font-sans tracking-tighter text-lg sm:text-xl md:text-2xl"
-        >
-          SUNDAY SOCIETY
+        <Link href="/" onClick={() => setClicked(false)} className="lg:flex-1">
+          <Image
+            src="/logo.png"
+            alt="Sunday Society"
+            width={452}
+            height={246}
+            priority
+            className="h-11 w-auto md:h-13 lg:h-15"
+          />
         </Link>
         <button
           type="button"
