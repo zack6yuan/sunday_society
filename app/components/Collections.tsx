@@ -28,7 +28,7 @@ const collections: Collection[] = [
     title: "FIRST LIGHT",
     copy: "The first tee time belongs to the faithful. Dew on the fairway, nobody ahead of you, service at eleven. First Light is layered for cold starts — quarter zips and mid crowns for the hours before the world wakes up.",
     cta: "SHOP FIRST LIGHT →",
-    shot: "MISTY DAWN TEE BOX",
+    image: { src: "/first-light.jpg", alt: "" },
     panel: "army",
     reverse: true,
   },
@@ -37,7 +37,7 @@ const collections: Collection[] = [
     title: "THE BACK NINE",
     copy: "Anyone can start well. The back nine is where rounds are won and character shows. Heavier fabrics, quieter colors — pieces for the players who finish what they started.",
     cta: "SHOP THE BACK NINE →",
-    shot: "SCORECARD AND PENCIL, LATE LIGHT",
+    image: { src: "/back-nine.jpg", alt: "" },
     panel: "paper",
   },
 ];
