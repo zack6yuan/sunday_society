@@ -5,11 +5,10 @@ import { useState } from "react";
 import { cartCount } from "../lib/cart";
 
 export default function Navbar() {
+  // The Society and Journal return here once those pages exist.
   const navItems = [
     { label: "MEN", route: "/men" },
     { label: "WOMEN", route: "/women" },
-    { label: "THE SOCIETY", route: "#" },
-    { label: "JOURNAL", route: "#" },
   ];
   const utilityItems = [
     { label: "SEARCH", route: "#" },
