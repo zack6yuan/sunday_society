@@ -1,28 +1,7 @@
 "use client";
 import { useState } from "react";
-import DropCard, { type DropCardProps } from "./DropCard";
-
-const men: DropCardProps[] = [
-  { name: "The Classic Sunday", price: 98, colorway: "Deep Forest Green", tile: "Polo 01", ground: "forest", ink: "paper", badge: "Icon" },
-  { name: "The Pure Focus", price: 98, colorway: "Cream / Forest", tile: "Polo 02", ground: "cream", ink: "army", badge: "New Arrival" },
-  { name: "The Sharp Edge", price: 108, colorway: "Matte Black Monogram", tile: "Polo 03", ground: "black", ink: "paper", soldOut: true },
-  { name: "The Foundation", price: 98, colorway: "Antique Gold", tile: "Polo 04", ground: "gold", ink: "army", badge: "New Arrival" },
-  { name: "The Rope Trucker", price: 42, colorway: "Cream / Green Rope", tile: "Hat 01", ground: "cream", ink: "army" },
-  { name: "The Mid Crown", price: 42, colorway: "Forest / Gold Stitch", tile: "Hat 02", ground: "forest", ink: "paper", badge: "Icon" },
-  { name: "The Strategy Layer", price: 128, colorway: "Cream Performance", tile: "Quarter Zip", ground: "cream", ink: "army", badge: "New Arrival" },
-  { name: "The Foursome Set", price: 68, colorway: "Head Covers / Markers", tile: "Accessories", ground: "black", ink: "gold" },
-];
-
-const women: DropCardProps[] = [
-  { name: "The Classic Sunday W", price: 94, colorway: "Deep Forest Green", tile: "Polo 01", ground: "forest", ink: "paper", badge: "New Arrival" },
-  { name: "The Pure Focus W", price: 94, colorway: "Cream / Forest", tile: "Polo 02", ground: "cream", ink: "army", badge: "New Arrival" },
-  { name: "The Sunday Skort", price: 88, colorway: "Warm White", tile: "Bottoms 01", ground: "cream", ink: "army" },
-  { name: "The Foundation W", price: 94, colorway: "Antique Gold", tile: "Polo 03", ground: "gold", ink: "army", soldOut: true },
-  { name: "The Rope Trucker", price: 42, colorway: "Cream / Green Rope", tile: "Hat 01", ground: "cream", ink: "army", badge: "Icon" },
-  { name: "The Visor", price: 36, colorway: "Forest Green", tile: "Hat 02", ground: "forest", ink: "gold" },
-  { name: "The Strategy Layer W", price: 124, colorway: "Cream Performance", tile: "Quarter Zip", ground: "cream", ink: "army", badge: "New Arrival" },
-  { name: "The Sunday Tote", price: 58, colorway: "Forest / Gold", tile: "Accessories", ground: "black", ink: "gold" },
-];
+import DropCard from "./DropCard";
+import { men, women } from "../lib/products";
 
 const tabs = [
   { id: "men", label: "MEN", products: men },
@@ -67,8 +46,8 @@ export default function Drop() {
         <div className="grid grid-cols-2 gap-x-3 gap-y-5 lg:grid-cols-4 lg:gap-x-5 lg:gap-y-6">
           {products.map((product, i) => (
             // The mobile mock runs a four-product grid; the back half is desktop-only.
-            <div key={product.name} className={i >= 4 ? "hidden lg:block" : undefined}>
-              <DropCard {...product} />
+            <div key={product.slug} className={i >= 4 ? "hidden lg:block" : undefined}>
+              <DropCard product={product} />
             </div>
           ))}
         </div>

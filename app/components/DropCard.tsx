@@ -1,42 +1,26 @@
+import Link from "next/link";
+import type { Ground, Ink, Product } from "../lib/products";
+
 // The product tile stands in for photography that does not exist yet: a flat
 // brand-colour ground with the shot name set into it. Ground and type colour
 // are picked per product so the grid reads as a palette rather than a swatch.
-const grounds = {
+const grounds: Record<Ground, string> = {
   forest: "bg-army",
   cream: "bg-paper",
   gold: "bg-gold",
   black: "bg-ink",
-} as const;
+};
 
-const inks = {
+const inks: Record<Ink, string> = {
   paper: "text-paper",
   army: "text-army",
   gold: "text-gold",
-} as const;
-
-export type DropCardProps = {
-  name: string;
-  price: number;
-  colorway: string;
-  tile: string;
-  ground: keyof typeof grounds;
-  ink: keyof typeof inks;
-  badge?: string;
-  soldOut?: boolean;
 };
 
-export default function DropCard({
-  name,
-  price,
-  colorway,
-  tile,
-  ground,
-  ink,
-  badge,
-  soldOut,
-}: DropCardProps) {
+export default function DropCard({ product }: { product: Product }) {
+  const { slug, name, price, colorway, tile, ground, ink, badge, soldOut } = product;
   return (
-    <a href="#" className="group block">
+    <Link href={`/products/${slug}`} className="group block">
       <div
         className={`relative flex h-50 items-center justify-center lg:h-85 ${grounds[ground]}`}
       >
@@ -70,6 +54,6 @@ export default function DropCard({
       <p className="mt-[3px] text-[9px] tracking-[0.05em] text-army/75 lg:mt-1 lg:text-[11px] lg:tracking-[0.06em]">
         {colorway}
       </p>
-    </a>
+    </Link>
   );
 }

@@ -36,9 +36,9 @@ Use [Conventional Commits](https://www.conventionalcommits.org/), matching the e
 
 ## What this is
 
-Sunday Society is a golf apparel and accessories brand. The destination is a real storefront (product pages, cart, checkout), but today it is front-end only: one static page composed of a promo utility bar, a nav, a hero, a collection feature, the first-drop product grid, and a footer.
+Sunday Society is a golf apparel and accessories brand. The destination is a real storefront (cart, checkout), but today it is front-end only: a homepage (promo utility bar, nav, hero, three collection features, the first-drop product grid, footer), department listings at `/men` and `/women`, and statically generated product pages at `/products/[slug]`.
 
-Product data lives inline in `Drop.tsx` as two typed arrays (men and women) fed to `DropCard`. There is no photography yet — `DropCard` renders a flat brand-colour tile with the shot name set into it, picking `ground` and `ink` per product so the grid reads as a palette. When real imagery arrives, that tile is the seam to replace.
+Product data lives in `app/lib/products.ts` as one typed catalog: a record keyed by slug plus ordered `men`/`women` arrays (the Rope Trucker is unisex and appears in both). Every product surface reads from this module — when a commerce backend is chosen, it replaces this file, not the components. Product photography does not exist yet — `DropCard` and the product page render a flat brand-colour tile with the shot name set into it, picking `ground` and `ink` per product so the grid reads as a palette. When real imagery arrives, that tile is the seam to replace. The collection sections have the same seam and already carry real photos.
 
 **No commerce backend or CMS has been chosen yet.** Keep content hardcoded in components until one is picked — don't add a data-fetching layer, state manager, or third-party SDK unprompted.
 
