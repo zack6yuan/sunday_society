@@ -3,8 +3,10 @@ import Image from "next/image";
 export default function Hero() {
   return (
     // Pulled up under the sticky nav pill so the photo bleeds behind it —
-    // the negative margins match the header's height (pt-3 + pill).
-    <section className="relative -mt-18 h-[60svh] md:-mt-20 lg:h-[87svh]">
+    // the negative margins match the header's height (pt-3 + pill), which
+    // makes the first screen exactly utility bar + hero at every width:
+    // 100svh minus the utility bar's h-6.
+    <section className="relative -mt-18 h-[calc(100svh-1.5rem)] md:-mt-20">
       <Image src="/first-light.jpg" alt="" fill priority className="object-cover" />
       {/* Scrim. The copy sits on whatever the photo happens to put behind it —
           bright foliage took the headline to 1.1:1 in places. */}
