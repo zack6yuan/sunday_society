@@ -57,10 +57,15 @@ export default function Footer() {
             <label htmlFor="footer-email" className="sr-only">
               Email address
             </label>
+            {/* Chrome's autofill predictions stamp autofill-* attributes on
+                this input before hydration; element-scoped suppression is
+                React's documented remedy for third-party attribute injection.
+                It covers this element's attributes only. */}
             <input
               id="footer-email"
               type="email"
               autoComplete="email"
+              suppressHydrationWarning
               placeholder="EMAIL ADDRESS"
               className="min-w-0 flex-1 bg-transparent px-4 py-3 text-xs font-bold tracking-wide uppercase placeholder:text-paper/60 focus:outline-none lg:text-sm"
             />
