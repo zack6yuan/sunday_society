@@ -38,6 +38,8 @@ Use [Conventional Commits](https://www.conventionalcommits.org/), matching the e
 
 Sunday Society is a golf apparel and accessories brand. The destination is a real storefront (checkout, accounts), but today it is front-end only: a homepage (promo utility bar, nav, hero, three collection features, the first-drop product grid, footer), department listings at `/men` and `/women`, statically generated product pages at `/products/[slug]`, a cart at `/cart`, and a branded 404.
 
+The four help pages under `/help` (shipping, returns, size guide, contact) share a layout that holds both the sidebar nav and the article typography, applied through `[&_h2]`-style variants so the pages themselves stay pure semantic content. **Their policy copy is placeholder** — plausible and consistent with what the rest of the site already claims (free shipping, 30-day returns), but never confirmed by the owner, as is `hello@sundaysociety.com`. Treat every number there as provisional until he signs off.
+
 Search is a full-screen overlay (`SearchOverlay`) opened from the nav on both breakpoints, not a route — it filters the in-memory catalog, so there is no index to keep in sync. It is mounted only while open, which is what keeps its query from surviving a close; don't switch it to a persistent mount with a visibility flag.
 
 The cart works but is client-only: `CartProvider` (React context persisted to `localStorage`) is the single source of cart state, consumed via `useCart` by the navbar badge, `AddToCart`, and `CartContents`. It renders empty on the server and loads the stored cart after mount so hydration always matches. Checkout is deliberately inert; when a commerce backend is chosen, the provider is the swap point.

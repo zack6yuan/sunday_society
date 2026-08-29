@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import AddToCart from "../../components/AddToCart";
 import { productBySlug, products } from "../../lib/products";
@@ -69,7 +70,14 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
           </div>
 
           <p className="mt-8 border-t border-dashed border-army/20 pt-5 text-xs tracking-[0.05em] text-army/60 lg:text-[13px]">
-            Free shipping on all orders. Returns within 30 days, no questions on the scorecard.
+            <Link href="/help/shipping" className="underline underline-offset-4 transition hover:text-gold">
+              Free shipping
+            </Link>{" "}
+            on all orders.{" "}
+            <Link href="/help/returns" className="underline underline-offset-4 transition hover:text-gold">
+              Returns within 30 days
+            </Link>
+            , no questions on the scorecard.
           </p>
         </div>
       </div>
