@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Collections() {
   return (
-    <section className="w-full flex flex-col lg:flex-row border-b border-dashed border-paper">
+    <section className="w-full flex flex-col lg:flex-row border-b border-dashed border-army/20">
       <div className="relative w-full h-[50svh] lg:h-[50svh]">
         <Image
           src="/pga.jpg"
