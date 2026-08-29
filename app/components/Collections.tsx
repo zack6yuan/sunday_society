@@ -28,7 +28,7 @@ const collections: Collection[] = [
     title: "FIRST LIGHT",
     copy: "The first tee time belongs to the faithful. Dew on the fairway, nobody ahead of you, service at eleven. First Light is layered for cold starts — quarter zips and mid crowns for the hours before the world wakes up.",
     cta: "SHOP FIRST LIGHT →",
-    image: { src: "/first-light.jpg", alt: "" },
+    image: { src: "/pga.jpg", alt: "" },
     panel: "army",
     reverse: true,
   },
