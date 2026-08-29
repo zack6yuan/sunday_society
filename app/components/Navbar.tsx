@@ -52,19 +52,31 @@ export default function Navbar() {
             }`}
           />
         </button>
-        <ul className="hidden lg:flex gap-6 xl:gap-10 text-sm font-bold">
+        {/* Desktop links follow the mock: small Archivo semibold, wide
+            tracking, and the gold underline that wipes in from the left. */}
+        <ul className="hidden lg:flex gap-8 xl:gap-10">
           {navItems.map((item) => (
             <li key={item.label}>
-              <Link href={item.route} className="hover:text-gold transition cursor-pointer">
+              <Link
+                href={item.route}
+                className="relative cursor-pointer py-1 font-display text-[11px] font-semibold tracking-[0.2em] uppercase transition hover:text-gold
+             after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full
+             after:origin-right after:scale-x-0 after:bg-gold
+             after:transition-transform
+             hover:after:origin-left hover:after:scale-x-100"
+              >
                 {item.label}
               </Link>
             </li>
           ))}
         </ul>
-        <ul className="hidden lg:flex lg:flex-1 lg:justify-end gap-6 xl:gap-10 text-sm font-bold">
+        <ul className="hidden lg:flex lg:flex-1 lg:justify-end gap-7 xl:gap-9">
           {utilityItems.map((item) => (
             <li key={item.label}>
-              <Link href={item.route} className="hover:text-gold transition cursor-pointer">
+              <Link
+                href={item.route}
+                className="cursor-pointer font-display text-[11px] font-semibold tracking-[0.18em] uppercase transition hover:text-gold"
+              >
                 {item.label}
               </Link>
             </li>
