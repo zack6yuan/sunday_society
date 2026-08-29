@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Archivo, EB_Garamond, DM_Sans } from "next/font/goog
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import UtilityBar from "./components/UtilityBar";
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <UtilityBar />
         <Navbar />
         <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
