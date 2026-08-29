@@ -1,19 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Archivo, EB_Garamond, DM_Sans } from "next/font/google";
+import { Archivo, EB_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import UtilityBar from "./components/UtilityBar";
 import Footer from "./components/Footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -41,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} ${ebGaramond.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${archivo.variable} ${ebGaramond.variable} ${dmSans.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans tracking-tighter">
