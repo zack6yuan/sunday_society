@@ -68,7 +68,7 @@ Match the existing visual language; it is deliberate, not scaffold output.
 
 Neutrals are named by role, not hue, so a future move off pure white doesn't mean renaming classes.
 
-**Anything sitting on army must set its text colour explicitly** (`text-paper` on the header, for example). Body text inherits `--foreground`, which the `prefers-color-scheme` block flips — so inherited text on a fixed dark surface is legible in dark mode and nearly invisible in light mode.
+**Anything sitting on army must set its text colour explicitly** (`text-paper` on the header, for example) — inherited `--foreground` is near-black and unreadable on a dark ground.
 
 **Fonts** (`@theme inline` aliases over `next/font` variables):
 - `font-sans` → DM Sans — nav, labels, buttons, body copy.
@@ -85,5 +85,4 @@ Neutrals are named by role, not hue, so a future move off pure white doesn't mea
 
 ## Known rough edges from the scaffold
 
-- `app/globals.css` still carries one create-next-app leftover: the `prefers-color-scheme` dark block flipping `--background`/`--foreground`. Nothing else in the design is dark-mode aware, and it has already caused one contrast bug (see the note in Design system). Worth deleting outright if the site is never going dark.
 - `README.md` and `public/*.svg` are still untouched create-next-app defaults.
