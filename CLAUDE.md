@@ -73,10 +73,10 @@ Neutrals are named by role, not hue, so a future move off pure white doesn't mea
 **Fonts** (`@theme inline` aliases over `next/font` variables):
 - `font-sans` → DM Sans — nav, labels, buttons, body copy.
 - `font-display` → Archivo — headlines, used `font-extrabold` and uppercase.
-- `font-serif` → EB Garamond — reserved for editorial/journal, not yet used.
+- `font-serif` → EB Garamond — the nav links (desktop), and reserved for editorial/journal beyond that.
 
 **Conventions:**
-- Nav items, labels, and button text are UPPERCASE and bold; headlines are uppercase `font-display font-extrabold`. `tracking-tighter` is set globally on `<body>`; label-ish text overrides to `tracking-wide`.
+- Labels and button text are UPPERCASE and bold; headlines are uppercase `font-display font-extrabold`. Nav links are the exception: oversized lowercase `font-serif` (both the desktop bar and the mobile menu) with the gold underline wipe. `tracking-tighter` is set globally on `<body>`; label-ish text overrides to `tracking-wide`, serif text to `tracking-normal`.
 - Hover is a color transition to `gold` (links) or an army/paper inversion (buttons). Write bare `transition` — speed comes from `--default-transition-duration` (300ms) in `@theme`, so don't add a `duration-*` class unless an element genuinely needs to differ. Interactive elements get `cursor-pointer`.
 - Section dividers are dashed hairlines: `border-b border-dashed border-rule`.
 - `lg:` is the desktop breakpoint — hamburger below it, full nav at and above. The mobile menu animates `grid-template-rows` from `0fr` to `1fr` (not `max-height`) so it sizes to its own content; adding menu items can never clip it. The panel is absolutely positioned under the header (`top-full`, `z-50`) so it overlays the page instead of pushing it down — its bottom rule lives on the inner `ul`, where the collapsed panel clips it, not on the zero-height outer div, where it would draw a stray line. Links are oversized and lowercase with a gold `after:` underline that wipes in from the left.

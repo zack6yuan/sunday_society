@@ -52,20 +52,21 @@ export default function Navbar() {
             }`}
           />
         </button>
-        {/* Desktop links follow the mock: small Archivo semibold, wide
-            tracking, and the gold underline that wipes in from the left. */}
+        {/* Desktop links speak in the mobile menu's voice: oversized lowercase
+            with the gold underline wipe — set in EB Garamond, the editorial
+            serif, rather than a small tracked-out label face. */}
         <ul className="hidden lg:flex gap-8 xl:gap-10">
           {navItems.map((item) => (
             <li key={item.label}>
               <Link
                 href={item.route}
-                className="relative cursor-pointer py-1 font-display text-[11px] font-semibold tracking-[0.2em] uppercase transition hover:text-gold
-             after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full
+                className="relative cursor-pointer py-1 font-serif text-xl tracking-normal transition hover:text-gold
+             after:absolute after:bottom-0 after:left-0 after:h-px after:w-full
              after:origin-right after:scale-x-0 after:bg-gold
              after:transition-transform
              hover:after:origin-left hover:after:scale-x-100"
               >
-                {item.label}
+                {item.label.toLowerCase()}
               </Link>
             </li>
           ))}
@@ -75,9 +76,9 @@ export default function Navbar() {
             <li key={item.label}>
               <Link
                 href={item.route}
-                className="cursor-pointer font-display text-[11px] font-semibold tracking-[0.18em] uppercase transition hover:text-gold"
+                className="cursor-pointer font-serif text-lg tracking-normal transition hover:text-gold"
               >
-                {item.label}
+                {item.label.toLowerCase()}
               </Link>
             </li>
           ))}
@@ -99,7 +100,7 @@ export default function Navbar() {
                 <Link
                   href={item.route}
                   onClick={() => setClicked(false)}
-                  className="relative block w-fit cursor-pointer text-3xl sm:text-4xl font-light transition hover:text-gold
+                  className="relative block w-fit cursor-pointer font-serif text-3xl tracking-normal sm:text-4xl transition hover:text-gold
              after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full
              after:origin-right after:scale-x-0 after:bg-gold
              after:transition-transform
