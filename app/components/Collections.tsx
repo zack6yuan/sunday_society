@@ -20,7 +20,7 @@ const collections: Collection[] = [
     title: "THE SUNDAY BEST CAPSULE",
     copy: "Cut for the day that matters twice. Pressed enough for the pew, built enough for the tee. No changing in the parking lot, no apologies to the starter. Just one shirt that holds up from the first hymn to the last putt.",
     cta: "SHOP SUNDAY BEST →",
-    shot: "PRESSED POLO ON A CHURCH PEW",
+    image: { src: "/sunday-best.jpg", alt: "" },
     panel: "paper",
   },
   {
@@ -28,7 +28,7 @@ const collections: Collection[] = [
     title: "FIRST LIGHT",
     copy: "The first tee time belongs to the faithful. Dew on the fairway, nobody ahead of you, service at eleven. First Light is layered for cold starts — quarter zips and mid crowns for the hours before the world wakes up.",
     cta: "SHOP FIRST LIGHT →",
-    image: { src: "/first-light.jpg", alt: "" },
+    image: { src: "/pga.jpg", alt: "" },
     panel: "army",
     reverse: true,
   },

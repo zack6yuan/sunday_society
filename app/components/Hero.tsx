@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section className="relative h-[60svh] lg:h-[87svh]">
-      <Image src="/pga.jpg" alt="" fill priority className="object-cover" />
+      <Image src="/first-light.jpg" alt="" fill priority className="object-cover" />
       {/* Scrim. The copy sits on whatever the photo happens to put behind it —
           bright foliage took the headline to 1.1:1 in places. */}
       <div
