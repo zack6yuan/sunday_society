@@ -36,7 +36,9 @@ Use [Conventional Commits](https://www.conventionalcommits.org/), matching the e
 
 ## What this is
 
-Sunday Society is a golf apparel and accessories brand. The destination is a real storefront (product pages, cart, checkout), but today it is front-end only: one static page composed of a promo utility bar, a nav, and a hero.
+Sunday Society is a golf apparel and accessories brand. The destination is a real storefront (product pages, cart, checkout), but today it is front-end only: one static page composed of a promo utility bar, a nav, a hero, a collection feature, and the first-drop product grid.
+
+Product data lives inline in `Drop.tsx` as two typed arrays (men and women) fed to `DropCard`. There is no photography yet — `DropCard` renders a flat brand-colour tile with the shot name set into it, picking `ground` and `ink` per product so the grid reads as a palette. When real imagery arrives, that tile is the seam to replace.
 
 **No commerce backend or CMS has been chosen yet.** Keep content hardcoded in components until one is picked — don't add a data-fetching layer, state manager, or third-party SDK unprompted.
 
@@ -55,11 +57,14 @@ Next.js 16 App Router, React 19, TypeScript strict, Tailwind CSS v4. `@/*` resol
 Match the existing visual language; it is deliberate, not scaffold output.
 
 **Colors** (`@theme` in `app/globals.css`). Never write a raw color in a component — no `text-white`, no `bg-black`, no hex. If a new color is needed, add a token here first:
-- `--color-army` `#123524` — deep bottle green. Header ground, button hover fill.
-- `--color-gold` `#ffbb00` — the single accent. Utility bar, hover states, eyebrow text.
-- `--color-paper` `#ffffff` — light type and fills sitting on army.
-- `--color-ink` `#0a0a0a` — dark type sitting on gold.
-- `--color-rule` `white/30` — dashed hairline dividers.
+- `--color-army` `#123524` — deep bottle green. Header ground, dark type on light grounds, product tiles.
+- `--color-gold` `#c9a227` — antique gold, the single accent. Utility bar, hover states, eyebrow text, badges.
+- `--color-paper` `#f5f1e8` — warm off-white. Light type and fills sitting on army.
+- `--color-ink` `#1c1c1c` — near-black. Dark type on gold, and the black product tile.
+- `--color-cloud` `#fafbf4` — the cooler off-white ground the product grid sits on.
+- `--color-rule` `paper/0.18` — dashed hairline dividers.
+
+`paper` and `cloud` are both off-whites and not interchangeable: `paper` is the warm one that sits against army, `cloud` is the cooler page ground under the drop grid.
 
 Neutrals are named by role, not hue, so a future move off pure white doesn't mean renaming classes.
 
