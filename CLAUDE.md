@@ -36,7 +36,7 @@ Use [Conventional Commits](https://www.conventionalcommits.org/), matching the e
 
 ## What this is
 
-Sunday Society is a golf apparel and accessories brand. The destination is a real storefront (product pages, cart, checkout), but today it is front-end only: one static page composed of a promo utility bar, a nav, a hero, a collection feature, and the first-drop product grid.
+Sunday Society is a golf apparel and accessories brand. The destination is a real storefront (product pages, cart, checkout), but today it is front-end only: one static page composed of a promo utility bar, a nav, a hero, a collection feature, the first-drop product grid, and a footer.
 
 Product data lives inline in `Drop.tsx` as two typed arrays (men and women) fed to `DropCard`. There is no photography yet — `DropCard` renders a flat brand-colour tile with the shot name set into it, picking `ground` and `ink` per product so the grid reads as a palette. When real imagery arrives, that tile is the seam to replace.
 
@@ -46,7 +46,7 @@ Product data lives inline in `Drop.tsx` as two typed arrays (men and women) fed 
 
 Next.js 16 App Router, React 19, TypeScript strict, Tailwind CSS v4. `@/*` resolves to the repo root.
 
-- `app/layout.tsx` is the only place site chrome lives: it loads the fonts via `next/font/google` (exposing them as CSS variables on `<html>`) and renders `UtilityBar` + `Navbar` inside `<body>`, above a `<main className="flex-1">` that pages render into. Page files render only their own sections — don't re-declare nav or footer per page.
+- `app/layout.tsx` is the only place site chrome lives: it loads the fonts via `next/font/google` (exposing them as CSS variables on `<html>`) and renders `UtilityBar` + `Navbar` inside `<body>`, above a `<main className="flex-1">` that pages render into, with `Footer` below it. Page files render only their own sections — don't re-declare nav or footer per page.
 - `app/components/` holds shared presentational components: one default export per file, PascalCase filename matching the component.
 - Server Components are the default. Add `"use client"` only for actual interactivity — `Navbar` is client-only because of the mobile menu toggle; `Hero` and `UtilityBar` are server components and should stay that way.
 - Request APIs are async in Next 16: `params` and `searchParams` are Promises. Type route files with the generated helpers, e.g. `PageProps<'/products/[slug]'>` and `LayoutProps<'/'>`.
