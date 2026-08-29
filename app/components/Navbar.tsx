@@ -2,8 +2,9 @@
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useCart } from "./CartProvider";
+import SearchOverlay from "./SearchOverlay";
 
 export default function Navbar() {
   const { count: cartCount } = useCart();
@@ -12,17 +13,21 @@ export default function Navbar() {
     { label: "Men", route: "/men" },
     { label: "Women", route: "/women" },
   ];
-  const utilityItems = [
-    { label: "Search", route: "#" },
-    { label: "Account", route: "#" },
-  ];
-  const menuItems = [
-    ...navItems,
-    ...utilityItems,
-    { label: `Cart (${cartCount})`, route: "/cart" },
-  ];
 
   const [clicked, setClicked] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  const openSearch = () => {
+    setClicked(false);
+    setSearchOpen(true);
+  };
+  // Stable identity: the overlay's key/scroll-lock effect depends on it.
+  const closeSearch = useCallback(() => setSearchOpen(false), []);
+
+  const linkClasses =
+    "cursor-pointer rounded-full px-4 py-2 font-sans text-[15px] font-medium tracking-normal transition hover:bg-paper/10";
+  const menuLinkClasses =
+    "relative block w-fit cursor-pointer font-serif text-3xl tracking-normal sm:text-4xl transition hover:text-gold after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-gold after:transition-transform hover:after:origin-left hover:after:scale-x-100";
 
   return (
     // The bar floats as a rounded pill with the page visible around it, and
@@ -65,25 +70,19 @@ export default function Navbar() {
         <ul className="hidden lg:flex lg:items-center lg:gap-1">
           {navItems.map((item) => (
             <li key={item.label}>
-              <Link
-                href={item.route}
-                className="cursor-pointer rounded-full px-4 py-2 font-sans text-[15px] font-medium tracking-normal transition hover:bg-paper/10"
-              >
+              <Link href={item.route} className={linkClasses}>
                 {item.label}
               </Link>
             </li>
           ))}
         </ul>
         <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-1">
-          {utilityItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.route}
-              className="cursor-pointer rounded-full px-4 py-2 font-sans text-[15px] font-medium tracking-normal transition hover:bg-paper/10"
-            >
-              {item.label}
-            </Link>
-          ))}
+          <button type="button" onClick={openSearch} className={linkClasses}>
+            Search
+          </button>
+          <Link href="#" className={linkClasses}>
+            Account
+          </Link>
           <Link
             href="/cart"
             className="ml-2 cursor-pointer rounded-full bg-gold px-5 py-2 font-sans text-[15px] font-semibold tracking-normal text-army transition hover:bg-paper"
@@ -104,24 +103,41 @@ export default function Navbar() {
       >
         <div className="overflow-hidden rounded-3xl">
           <ul className="flex flex-col gap-5 px-6 pt-5 pb-7 sm:gap-6">
-            {menuItems.map((item) => (
+            {navItems.map((item) => (
               <li key={item.label}>
                 <Link
                   href={item.route}
                   onClick={() => setClicked(false)}
-                  className="relative block w-fit cursor-pointer font-serif text-3xl tracking-normal sm:text-4xl transition hover:text-gold
-             after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full
-             after:origin-right after:scale-x-0 after:bg-gold
-             after:transition-transform
-             hover:after:origin-left hover:after:scale-x-100"
+                  className={menuLinkClasses}
                 >
                   {item.label.toLowerCase()}
                 </Link>
               </li>
             ))}
+            <li>
+              <button type="button" onClick={openSearch} className={menuLinkClasses}>
+                search
+              </button>
+            </li>
+            <li>
+              <Link href="#" onClick={() => setClicked(false)} className={menuLinkClasses}>
+                account
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/cart"
+                onClick={() => setClicked(false)}
+                className={menuLinkClasses}
+              >
+                cart ({cartCount})
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
+
+      {searchOpen && <SearchOverlay onClose={closeSearch} />}
     </header>
   );
 }
