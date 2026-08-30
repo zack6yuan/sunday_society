@@ -31,7 +31,7 @@ export default function DropCard({ product }: { product: Product }) {
       </div>
 
       <div className="mt-2.5 flex items-baseline justify-between gap-2 lg:mt-3.5">
-        <span className="text-[10px] font-bold tracking-[0.1em] text-army uppercase transition group-hover:text-gold lg:text-xs lg:tracking-[0.12em]">
+        <span className="text-[10px] font-bold tracking-[0.1em] text-army uppercase transition group-hover:text-brass lg:text-xs lg:tracking-[0.12em]">
           {name}
         </span>
         <span className="text-[10px] font-medium text-army lg:text-xs">${price}</span>

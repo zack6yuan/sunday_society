@@ -77,7 +77,9 @@ export default function Collections() {
             <div
               className={`flex flex-col justify-center p-10 space-y-5 lg:w-1/2 lg:px-16 ${onArmy ? "bg-army" : "bg-paper"}`}
             >
-              <span className="text-gold font-bold font-sans tracking-wide text-sm">
+              <span
+                className={`font-bold font-sans tracking-wide text-sm ${onArmy ? "text-gold" : "text-brass"}`}
+              >
                 {collection.eyebrow}
               </span>
               <h3
@@ -89,7 +91,7 @@ export default function Collections() {
                 {collection.copy}
               </p>
               <button
-                className={`underline underline-offset-5 decoration-2 flex hover:text-gold transition cursor-pointer ${onArmy ? "text-paper" : "text-army"}`}
+                className={`underline underline-offset-5 decoration-2 flex transition cursor-pointer ${onArmy ? "text-paper hover:text-gold" : "text-army hover:text-brass"}`}
               >
                 <p className="font-semibold text-base md:text-lg lg:text-xl">{collection.cta}</p>
               </button>

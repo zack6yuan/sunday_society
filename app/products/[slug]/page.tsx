@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
         </div>
 
         <div className="flex flex-col justify-center">
-          <span className="font-sans text-[9px] font-bold tracking-[0.24em] text-gold uppercase lg:text-[10px] lg:tracking-[0.26em]">
+          <span className="font-sans text-[9px] font-bold tracking-[0.24em] text-brass uppercase lg:text-[10px] lg:tracking-[0.26em]">
             {product.category}
           </span>
           <h1 className="mt-2 font-display text-3xl font-extrabold tracking-[0.02em] text-army uppercase lg:mt-3 lg:text-4xl">
@@ -69,12 +69,12 @@ export default async function ProductPage({ params }: PageProps<"/products/[slug
             <AddToCart slug={product.slug} sizes={product.sizes} soldOut={product.soldOut} />
           </div>
 
-          <p className="mt-8 border-t border-dashed border-army/20 pt-5 text-xs tracking-[0.05em] text-army/60 lg:text-[13px]">
-            <Link href="/help/shipping" className="underline underline-offset-4 transition hover:text-gold">
+          <p className="mt-8 border-t border-dashed border-army/20 pt-5 text-xs tracking-[0.05em] text-army/75 lg:text-[13px]">
+            <Link href="/help/shipping" className="underline underline-offset-4 transition hover:text-brass">
               Free shipping
             </Link>{" "}
             on all orders.{" "}
-            <Link href="/help/returns" className="underline underline-offset-4 transition hover:text-gold">
+            <Link href="/help/returns" className="underline underline-offset-4 transition hover:text-brass">
               Returns within 30 days
             </Link>
             , no questions on the scorecard.

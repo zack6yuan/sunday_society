@@ -8,7 +8,9 @@
 @theme {
   /* Brand */
   --color-army: #123524;
-  --color-gold: #c9a227;
+  --color-gold: #c9a227; /* the accent on army and other dark grounds */
+  --color-brass: #7d6418; /* the same accent for light grounds — gold on paper
+                             or cloud only reaches 2.2:1, brass clears 5:1 */
 
   /* Neutrals, named by role rather than by hue */
   --color-paper: #f5f1e8; /* light type and fills on army */
