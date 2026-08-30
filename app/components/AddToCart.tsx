@@ -45,7 +45,7 @@ export default function AddToCart({
             </span>
             <Link
               href="/help/size-guide"
-              className="text-[10px] font-bold tracking-[0.14em] text-army/60 uppercase underline underline-offset-4 transition hover:text-gold"
+              className="text-[10px] font-bold tracking-[0.14em] text-army/75 uppercase underline underline-offset-4 transition hover:text-brass"
             >
               Size Guide
             </Link>
@@ -61,7 +61,7 @@ export default function AddToCart({
                 className={`min-w-11 cursor-pointer border px-3 py-2.5 text-[11px] font-bold tracking-wide uppercase transition disabled:cursor-not-allowed disabled:opacity-40 ${
                   size === option
                     ? "border-army bg-army text-paper"
-                    : "border-army/40 bg-transparent text-army hover:border-army hover:text-gold"
+                    : "border-army/40 bg-transparent text-army hover:border-army hover:text-brass"
                 }`}
               >
                 {option}

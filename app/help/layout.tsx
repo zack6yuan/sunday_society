@@ -9,7 +9,7 @@ const prose = [
   "[&_p]:mt-3 [&_p]:max-w-prose [&_p]:text-sm [&_p]:leading-relaxed [&_p]:text-army/80 lg:[&_p]:text-base",
   "[&_ul]:mt-4 [&_ul]:flex [&_ul]:max-w-prose [&_ul]:flex-col [&_ul]:gap-2.5",
   "[&_li]:border-l [&_li]:border-army/20 [&_li]:pl-4 [&_li]:text-sm [&_li]:leading-relaxed [&_li]:text-army/80 lg:[&_li]:text-base",
-  "[&_a]:underline [&_a]:underline-offset-4 [&_a]:transition hover:[&_a]:text-gold",
+  "[&_a]:underline [&_a]:underline-offset-4 [&_a]:transition hover:[&_a]:text-brass",
 ].join(" ");
 
 export default function HelpLayout({ children }: LayoutProps<"/help">) {

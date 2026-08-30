@@ -25,7 +25,7 @@ const womens = [
 ];
 
 const headCell =
-  "py-2.5 pr-4 text-left font-sans text-[10px] font-bold tracking-[0.18em] text-gold uppercase";
+  "py-2.5 pr-4 text-left font-sans text-[10px] font-bold tracking-[0.18em] text-brass uppercase";
 const cell = "py-2.5 pr-4 text-sm text-army/80";
 
 function SizeTable({

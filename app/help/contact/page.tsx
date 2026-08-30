@@ -76,7 +76,7 @@ export default function ContactPage() {
         >
           Send
         </button>
-        <p className="text-[11px] text-army/60">
+        <p className="text-[11px] text-army/75">
           The form opens with the shop. Until then, email reaches us fastest.
         </p>
       </div>

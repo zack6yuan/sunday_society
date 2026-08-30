@@ -17,7 +17,7 @@ export default function Drop() {
       <div className="mx-auto max-w-[1440px]">
         <div className="mb-6 flex items-end justify-between gap-4 lg:mb-11">
           <div>
-            <span className="font-sans text-[9px] font-bold tracking-[0.24em] text-gold uppercase lg:text-[10px] lg:tracking-[0.26em]">
+            <span className="font-sans text-[9px] font-bold tracking-[0.24em] text-brass uppercase lg:text-[10px] lg:tracking-[0.26em]">
               Featured Releases
             </span>
             <h2 className="mt-2 font-display text-xl font-extrabold tracking-[0.02em] text-army uppercase lg:mt-3 lg:text-[34px]">
@@ -34,7 +34,7 @@ export default function Drop() {
                 onClick={() => setTab(t.id)}
                 aria-pressed={tab === t.id}
                 className={`cursor-pointer px-3.5 py-2 text-[9px] font-bold tracking-[0.16em] uppercase transition lg:px-6 lg:py-2.5 lg:text-[11px] lg:tracking-[0.2em] ${
-                  tab === t.id ? "bg-army text-paper" : "bg-transparent text-army hover:text-gold"
+                  tab === t.id ? "bg-army text-paper" : "bg-transparent text-army hover:text-brass"
                 }`}
               >
                 {t.label}

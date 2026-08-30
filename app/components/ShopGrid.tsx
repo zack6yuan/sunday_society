@@ -17,7 +17,7 @@ export default function ShopGrid({
     <section className="bg-cloud px-5 pt-11 pb-13 lg:px-12 lg:pt-16 lg:pb-24">
       <div className="mx-auto max-w-[1440px]">
         <div className="mb-7 lg:mb-11">
-          <span className="font-sans text-[9px] font-bold tracking-[0.24em] text-gold uppercase lg:text-[10px] lg:tracking-[0.26em]">
+          <span className="font-sans text-[9px] font-bold tracking-[0.24em] text-brass uppercase lg:text-[10px] lg:tracking-[0.26em]">
             The First Drop
           </span>
           <h1 className="mt-2 font-display text-3xl font-extrabold tracking-[0.02em] text-army uppercase lg:mt-3 lg:text-5xl">

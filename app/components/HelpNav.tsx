@@ -14,7 +14,7 @@ export default function HelpNav() {
 
   return (
     <nav aria-label="Help">
-      <h2 className="font-sans text-[10px] font-bold tracking-[0.24em] text-gold uppercase">
+      <h2 className="font-sans text-[10px] font-bold tracking-[0.24em] text-brass uppercase">
         Help
       </h2>
       {/* Scrolls sideways on phones rather than stacking four rows above
@@ -27,7 +27,7 @@ export default function HelpNav() {
               <Link
                 href={page.href}
                 aria-current={current ? "page" : undefined}
-                className={`text-sm whitespace-nowrap transition hover:text-gold lg:text-base ${
+                className={`text-sm whitespace-nowrap transition hover:text-brass lg:text-base ${
                   current ? "font-bold text-army" : "text-army/70"
                 }`}
               >

@@ -49,7 +49,7 @@ export default function CartContents() {
                 <div className="flex items-baseline justify-between gap-3">
                   <Link
                     href={`/products/${product.slug}`}
-                    className="text-xs font-bold tracking-[0.1em] text-army uppercase transition hover:text-gold lg:text-sm"
+                    className="text-xs font-bold tracking-[0.1em] text-army uppercase transition hover:text-brass lg:text-sm"
                   >
                     {product.name}
                   </Link>
@@ -68,7 +68,7 @@ export default function CartContents() {
                       type="button"
                       onClick={() => setQuantity(line.slug, line.size, line.quantity - 1)}
                       aria-label="Decrease quantity"
-                      className="cursor-pointer px-2.5 py-1 text-sm text-army transition hover:text-gold"
+                      className="cursor-pointer px-2.5 py-1 text-sm text-army transition hover:text-brass"
                     >
                       −
                     </button>
@@ -79,7 +79,7 @@ export default function CartContents() {
                       type="button"
                       onClick={() => setQuantity(line.slug, line.size, line.quantity + 1)}
                       aria-label="Increase quantity"
-                      className="cursor-pointer px-2.5 py-1 text-sm text-army transition hover:text-gold"
+                      className="cursor-pointer px-2.5 py-1 text-sm text-army transition hover:text-brass"
                     >
                       +
                     </button>
@@ -87,7 +87,7 @@ export default function CartContents() {
                   <button
                     type="button"
                     onClick={() => remove(line.slug, line.size)}
-                    className="cursor-pointer text-[10px] font-bold tracking-[0.14em] text-army/60 uppercase transition hover:text-gold"
+                    className="cursor-pointer text-[10px] font-bold tracking-[0.14em] text-army/75 uppercase transition hover:text-brass"
                   >
                     Remove
                   </button>
@@ -109,7 +109,7 @@ export default function CartContents() {
           </div>
           <div className="flex justify-between">
             <dt>Shipping</dt>
-            <dd className="font-bold tracking-wide text-gold uppercase">Free</dd>
+            <dd className="font-bold tracking-wide text-brass uppercase">Free</dd>
           </div>
         </dl>
         <div className="mt-5 flex justify-between border-t border-dashed border-army/30 pt-5 text-sm font-bold text-army uppercase">
@@ -122,7 +122,7 @@ export default function CartContents() {
         >
           Checkout
         </button>
-        <p className="mt-4 text-[11px] leading-relaxed text-army/60">
+        <p className="mt-4 text-[11px] leading-relaxed text-army/75">
           Checkout opens when the shop does. Free shipping on all orders, always.
         </p>
       </aside>

@@ -64,7 +64,8 @@ Match the existing visual language; it is deliberate, not scaffold output.
 
 **Colors** (`@theme` in `app/globals.css`). Never write a raw color in a component — no `text-white`, no `bg-black`, no hex. If a new color is needed, add a token here first:
 - `--color-army` `#123524` — deep bottle green. Header ground, dark type on light grounds, product tiles.
-- `--color-gold` `#c9a227` — antique gold, the single accent. Utility bar, hover states, eyebrow text, badges.
+- `--color-gold` `#c9a227` — antique gold, the single accent **on army and other dark grounds**. Utility bar, hover states, eyebrow text, badges.
+- `--color-brass` `#7d6418` — the same accent **for light grounds**. Gold on `paper` or `cloud` only reaches 2.2:1; brass clears 5:1.
 - `--color-paper` `#f5f1e8` — warm off-white. Light type and fills sitting on army.
 - `--color-ink` `#1c1c1c` — near-black. Dark type on gold, and the black product tile.
 - `--color-cloud` `#fafbf4` — the cooler off-white ground the product grid sits on.
@@ -73,6 +74,8 @@ Match the existing visual language; it is deliberate, not scaffold output.
 `paper` and `cloud` are both off-whites and not interchangeable: `paper` is the warm one that sits against army, `cloud` is the cooler page ground under the drop grid.
 
 Neutrals are named by role, not hue, so a future move off pure white doesn't mean renaming classes.
+
+**Accent text follows its ground: `gold` on dark, `brass` on light** — including hover states. Neither works on the other side (`brass` on army is 2.6:1). Where a component alternates grounds, such as the collection panels, the accent has to be conditional too.
 
 **Anything sitting on army must set its text colour explicitly** (`text-paper` on the header, for example) — inherited `--foreground` is near-black and unreadable on a dark ground.
 
